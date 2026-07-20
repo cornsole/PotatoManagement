@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "check": "node --check index.js && node --check deploy-commands.js && node --check db.js && node --check test/smoke.js",
     "deploy": "node deploy-commands.js",
-    "start": "node index.js"
+    "smoke": "node test/smoke.js",
+    "start": "node index.js",
+    "test": "npm run check && npm run smoke"
+  },
+  "allowScripts": {
+    "better-sqlite3": true
   },
   "dependencies": {
     "better-sqlite3": "^11.3.0",
