@@ -15,13 +15,17 @@ logDonation({
     amount: 7000,
     title: 'CI',
     group: '02후원a',
-    discordUserId: '1',
-    discordUserTag: 'ci-user',
+    donorUserId: '1',
+    donorUserTag: 'donor-user',
+    processorUserId: '2',
+    processorUserTag: 'admin-user',
 });
 
 const records = getDonationsByNickname('ci-user');
 assert.equal(records.length, 1);
 assert.equal(records[0].amount, 7000);
+assert.equal(records[0].donor_user_id, '1');
+assert.equal(records[0].discord_user_id, '2');
 assert.equal(getRecentDonations().length, 1);
 assert.deepEqual(getDonationSummary('ci-user'), { count: 1, total: 7000 });
 
